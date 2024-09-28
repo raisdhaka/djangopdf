@@ -15,44 +15,13 @@
     </style>
   </head>
   <body>
-    <h1>Customer Invoice</h1>
+    <h1>Print Invoice</h1>
 
-    <table>
-      <tr>
-        <th>Customer Name</th>
-        <td>{{ invoice.customer.name }}</td>
-      </tr>
-      <tr>
-        <th>Address</th>
-        <td>{{ invoice.customer.address }}</td>
-      </tr>
-      <tr>
-        <th>Date</th>
-        <td>{{ invoice.date }}</td>
-      </tr>
-      <tr>
-        <th>Total</th>
-        <td>{{ invoice.total }}</td>
-      </tr>
-    </table>
-    <h2>Invoice Items</h2>
-    <table>
-      <tr>
-        <th>Product</th>
-        <th>Quantity</th>
-        <th>Price</th>
-      </tr>
-      {% for item in items %}
-      <tr>
-        <td>{{ item.product }}</td>
-        <td>{{ item.quantity }}</td>
-        <td>{{ item.price }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-    <br />
-    <button onclick="window.print()" a href="{% url 'print_invoice' %}">
-      Print
-    </button>
+    
+
+<form method="post" action="{% url 'print_invoice' %}">
+      {% csrf_token %}
+      <button type="submit">Generate PDF</button>
+    </form>
   </body>
 </html>
