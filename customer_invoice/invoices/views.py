@@ -35,7 +35,7 @@ def generate_pdf_function(company_name, invoice_number, invoice_date, customer_n
     html = '<html><body>'
 
 
-    html += '<h1 style="text-align:center">Schedule 1</h1'
+    html += '<h1 style="text-align:center">Schedule 1</h1>'
     html += '<p style="text-align:center">The schedule below shall be filled in if there is income from emplyment</p>'
     html += '<p>a. This part is applicable for employees receiving Salary under Govt. pay scale</p>'
     html += '<p>Name of the Assessee:						#REF!</p>'
