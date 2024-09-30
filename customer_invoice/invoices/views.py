@@ -93,3 +93,38 @@ def generate_pdf_function(company_name, invoice_number, invoice_date, customer_n
     return result
 
 
+def it10b_pdf_function():
+    
+
+    html = '<html><body>'
+
+
+    html += '<h1>IT-10 B (2023)</h1>'
+    html += '<h2>Statement of Assets, Liabilities and Expenses</h2>'
+    html += '<div class="form-group">'
+    html += '<label>Name of the Assessee:</label>'
+    html += '<input type="text" id="assessee-name">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>TIN:</label>'
+    html += '<input type="text" id="tin">'
+    html += '</div>'
+    
+
+  
+    html += '</body></html>'
+    result = pisa.CreatePDF(html)
+    return result
+
+
+def print_itTenB(request):
+
+    if request.method == 'POST':
+
+        return it10b_pdf_function()
+     
+    
+    return render(request, 'itTenB.html')
+
+    
