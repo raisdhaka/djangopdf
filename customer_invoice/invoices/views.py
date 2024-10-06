@@ -93,7 +93,7 @@ def generate_pdf_function(company_name, invoice_number, invoice_date, customer_n
     return result
 
 
-def it10b_pdf_function():
+def itTenB_pdf_function():
     
 
     html = '<html><body>'
@@ -110,6 +110,79 @@ def it10b_pdf_function():
     html += '<label>TIN:</label>'
     html += '<input type="text" id="tin">'
     html += '</div>'
+
+    html += '<h3>Sources of fund:</h3>'
+    html += '<div class="form-group">'
+    html += '<label>1. Total income shown in return:</label>'
+    html += '<input type="text" id="total-income">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>2. Tax Exempted Income:</label>'
+    html += '<input type="text" id="tax-exempted-income">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>3. Receipt of Gift and others:</label>'
+    html += '<input type="text" id="receipt-of-gift">'
+    html += '</div>'
+
+    html +="<h3>Particular of assets located in Bangladesh:</h3>"
+    html += '<div class="form-group">'
+    html += '<label>4. Business capital in Partnership Firm:</label>'
+    html += '<input type="text" id="business-capital">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>5. Motor car(s) (cost value):</label>'
+    html += '<input type="text" id="motor-car-value">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>6. Non-agricultural property/land/building:</label>'
+    html += '<input type="text" id="non-agri-property">'
+    html += '</div>'
+
+    html += '<h3>Financial assets:</h3>'
+    html += '<div class="form-group">'
+    html += '<label>7. Fixed Deposit/Term Deposit:</label>'
+    html += '<input type="text" id="fixed-deposit">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += ' <label>8. Provident Fund or Other Fund:</label>'
+    html += '<input type="text" id="provident-fund">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>9. Other investment:</label>'   
+    html += '<input type="text" id="other-investment">'
+    html += '</div>'
+
+    html += '<h3> <h3>Assets located outside of Bangladesh:</h3></h3>'
+    html += '<div class="form-group">'
+    html += '<label>10. Furniture and electronic items:</label>'   
+    html += '<input type="text" id="furniture-electronics">'
+    html += '</div>'
+
+    html += '<div class="form-group">'
+    html += '<label>11. Other assets:</label>'
+    html += '<input type="text" id="other-assets">'
+    html += '</div>'
+
+  
+    html += '<div class="form-group">'
+    html += '<label>Date:</label>'
+    html += '<input type="text" id="date">'
+    html += '</div>'
+
+
+    html += '<p>I declare that to the best of my knowledge and belief the information given in this IT-10B (2023) herewith are correct and complete.</p>'
+
+    html += '<div class="form-group">'
+    html += '<label>Name of Assessee and Signature:</label>'
+    html += '<input type="text" id="signature">'
+    html += '</div>'
     
 
   
@@ -121,8 +194,14 @@ def it10b_pdf_function():
 def print_itTenB(request):
 
     if request.method == 'POST':
+        result = itTenB_pdf_function()
+        if result.err:
+            return HttpResponse('Error generating PDF: %s' % result.err)
+        response = HttpResponse(content_type='application/pdf')
+        response.write(result.dest.getvalue())
+        return response
 
-        return it10b_pdf_function()
+        # return it10b_pdf_function()
      
     
     return render(request, 'itTenB.html')
