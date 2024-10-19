@@ -7,5 +7,6 @@ urlpatterns = [
     path('schedule5/', views.schedule5, name='schedule5'),
     path('it10bb/', views.it10bb, name='it10bb'),
     path('it10b/', views.it10b, name='it10b'),
+    path('it11ga/', views.it11ga, name='it11ga')
 ]
     

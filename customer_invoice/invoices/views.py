@@ -106,6 +106,29 @@ def it10b(request):
 
 
 
+def it11ga(request):
+    context = {
+            "company_name" : "wfd",
+            "invoice_number":"234345",
+            "invoice_date":"2024/09/28",
+            "customer_name":"Beku",
+            "customer_address":"Cherag Ali",
+            "item":"socuso ocoo",
+            "title": "IT-11 GA (2023)"
+        }
+    response = render_to_pdf("it11ga.html", context)
+
+
+    if response.status_code == 404:
+        raise HTTP404("Invoice not found")
+
+    filename = f"it10b.pdf"
+    content = f"attachment; filename={filename}"
+    response["Content-Disposition"] = content
+
+    return response
+
+
     
 def render_to_pdf(template_src, context_dict={}):
     template = get_template(template_src)
