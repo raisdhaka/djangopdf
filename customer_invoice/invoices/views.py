@@ -122,7 +122,7 @@ def it11ga(request):
     if response.status_code == 404:
         raise HTTP404("Invoice not found")
 
-    filename = f"it10b.pdf"
+    filename = f"it11ga.pdf"
     content = f"attachment; filename={filename}"
     response["Content-Disposition"] = content
 
